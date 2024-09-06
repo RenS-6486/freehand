@@ -125,6 +125,28 @@ def scan_plot(gt,axs,color,width = 4, scatter = 8, legend_size=50,legend = None)
         ax.set_zlabel('z',fontsize=legend_size)
         plt.rc('xtick', labelsize=legend_size)    # fontsize of the tick labels
         plt.rc('ytick', labelsize=legend_size)    # fontsize of the tick labels
+        ax.set_xticks([])  # Remove x-axis ticks
+        ax.set_yticks([])  # Remove y-axis ticks
+        ax.set_zticks([])  # Remove z-axis ticks
+        
+        # Remove the axes labels
+        ax.set_xlabel('')
+        ax.set_ylabel('')
+        ax.set_zlabel('')
+        
+        # Remove grid lines
+        ax.xaxis.pane.fill = False
+        ax.yaxis.pane.fill = False
+        ax.zaxis.pane.fill = False
+        ax.xaxis._axinfo['grid'].update(color = 'none')
+        ax.yaxis._axinfo['grid'].update(color = 'none')
+        ax.zaxis._axinfo['grid'].update(color = 'none')
+        
+        ax.patch.set_alpha(0.0)
+        # Optionally, set the background color to be transparent
+        ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.0))  # Remove x-axis line
+        ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.0))  # Remove y-axis line
+        ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.0)) 
         
 
 def scan_plot_gt_pred(gt,pred,saved_name,color,width = 4, scatter = 8, legend_size=50,legend = None):
@@ -136,8 +158,8 @@ def scan_plot_gt_pred(gt,pred,saved_name,color,width = 4, scatter = 8, legend_si
         axs.append(fig.add_subplot(1,1,i+1,projection='3d'))
     plt.tight_layout()
 
-    scan_plot(gt,axs,'g',width, scatter, legend_size,legend = 'gt')
-    scan_plot(pred,axs,'r',width, scatter, legend_size,legend = 'pred')
+    scan_plot(gt,axs,'b',width, scatter, legend_size,legend = 'ground truth')
+    scan_plot(pred,axs,'r',width, scatter, legend_size,legend = 'prediction')
 
     plt.savefig(saved_name +'.png')
     plt.close()
