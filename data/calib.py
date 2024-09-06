@@ -10,6 +10,7 @@ def read_calib_matrices(filename_calib, resample_factor):
         csv_reader = csv.reader(csv_file, delimiter=',')  
         i = 0
         for ii, row in enumerate(csv_reader):
+            print(ii, row)
             if ii not in [0, 5, 10, 11]:
                 tform_calib[i,:] = (list(map(float,row)))
                 i += 1
