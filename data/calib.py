@@ -12,6 +12,7 @@ def read_calib_matrices(filename_calib, resample_factor):
         for ii, row in enumerate(csv_reader):
             print(ii, row)
             if ii not in [0, 5, 10, 11]:
-                tform_calib[i,:] = (list(map(float,row)))
+                #tform_calib[i,:] = (list(map(float,row)))
                 i += 1
+        raise ValueError('A very specific bad thing happened.')
     return tform_calib[4:8,:] @ tform_calib[0:4,:] @ np.array([[resample_factor,0,0,0], [0,resample_factor,0,0], [0,0,1,0], [0,0,0,1]], np.float32)
