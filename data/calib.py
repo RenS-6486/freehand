@@ -9,6 +9,7 @@ def read_calib_matrices(filename_calib, resample_factor):
     with open(filename_calib) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')  
         i = 0
+        print(csv_reader)
         for ii, row in enumerate(csv_reader):
             print(ii, row)
             if ii not in [0, 5, 10, 11]:
