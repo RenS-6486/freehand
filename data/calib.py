@@ -6,7 +6,7 @@ import numpy as np
 def read_calib_matrices(filename_calib, resample_factor):
     # T{image->tool} = T{image_mm -> tool} * T{image_pix -> image_mm} * T{resampled_image_pix -> image_pix}
     tform_calib = np.empty((8,4), np.float32)
-    with open(filename_calib) as csv_file:
+    with open(filename_calib, mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')  
         i = 0
         print(csv_reader)
