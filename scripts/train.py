@@ -18,7 +18,7 @@ from freehand.utils import *
 
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
+print(device)
 RESAMPLE_FACTOR = 4
 FILENAME_CALIB = "data/calib_matrix.csv"
 FILENAME_FRAMES = os.path.join(os.getcwd(), "data/Freehand_US_data", 'frames_res{}'.format(RESAMPLE_FACTOR)+".h5")
