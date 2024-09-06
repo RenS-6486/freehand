@@ -129,6 +129,7 @@ val_loss_min = 1e10
 val_dist_min = 1e10
 optimiser = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 for epoch in range(NUM_EPOCHS):
+    print(epoch)
     train_epoch_loss = 0
     train_epoch_dist = 0
     for step, (frames, tforms, tforms_inv) in enumerate(train_loader):
