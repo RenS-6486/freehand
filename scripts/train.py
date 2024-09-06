@@ -122,7 +122,7 @@ model = build_model(
     in_frames = NUM_SAMPLES, 
     out_dim = pred_dim
     ).to(device)
-
+print("model created")
 
 ## train
 val_loss_min = 1e10
