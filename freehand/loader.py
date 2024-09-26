@@ -115,6 +115,7 @@ class SSFrameDataset():  # Subject-Scan frame loader
         n0 = random.randint(0,n-self.sample_range)  # sample the start index for the range
         idx_frames = random.sample(range(n0,n0+self.sample_range), self.num_samples)   # sample indices
         idx_frames.sort()
+        print(idx_frames)
         return idx_frames
     
 
