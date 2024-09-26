@@ -99,6 +99,7 @@ class SSFrameDataset():  # Subject-Scan frame loader
 
     def __getitem__(self, idx):
         indices = self.indices_in_use[idx]
+        print(self.num_frames[indices])
         if self.num_samples == -1:  # sample all available frames, for validation
             i_frames = range(self.num_frames[indices])
         else:
