@@ -106,9 +106,8 @@ class SSFrameDataset():  # Subject-Scan frame loader
 
         frames = [self.file['/sub{:03d}_scan{:02d}_frame{:04d}'.format(indices[0],indices[1],ii)] for ii in i_frames]
         tforms = [self.file['/sub{:03d}_scan{:02d}_tform{:04d}'.format(indices[0],indices[1],ii)] for ii in i_frames]
-        tforms_inv = [self.file['/sub{:03d}_scan{:02d}_tform_inv{:04d}'.format(indices[0],indices[1],ii)] for ii in i_frames]
 
-        return np.stack(frames,axis=0), np.stack(tforms,axis=0), np.stack(tforms_inv,axis=0)
+        return np.stack(frames,axis=0), np.stack(tforms,axis=0)
     
 
     def frame_sampler(self, n):
