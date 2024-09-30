@@ -64,7 +64,7 @@ class LabelTransform():
             self.image_points = image_points
             self.tform_image_to_tool = tform_image_to_tool
             # pre-compute reference points in tool coordinates
-            if self.tform_image_to_tool:
+            if self.tform_image_to_tool is not None:
                 self.image_points_in_tool = torch.matmul(self.tform_image_to_tool,self.image_points)
             else:
                 self.image_points_in_tool = self.image_points
@@ -147,7 +147,7 @@ class PredictionTransform():
             self.tform_image_to_tool = tform_image_to_tool
             self.in_image_coords = in_image_coords
             # pre-compute reference points in tool coordinates
-            if self.tform_image_to_tool:
+            if self.tform_image_to_tool is not None:
                 self.image_points_in_tool = torch.matmul(self.tform_image_to_tool,self.image_points)
             else:
                 self.image_points_in_tool = self.image_points
