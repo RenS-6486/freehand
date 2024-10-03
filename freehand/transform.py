@@ -250,9 +250,11 @@ class TransformAccumulation:
         
         self.image_points = image_points
         self.tform_image_to_tool = tform_image_to_tool
-        self.tform_tool_to_image = torch.linalg.inv(self.tform_image_to_tool) # pre-compute the inverse
-        # pre-compute reference points in tool coordinates
-        self.image_points_in_tool = torch.matmul(self.tform_image_to_tool,self.image_points)
+        if self.tform_image_to_tool is not None:
+            self.image_points_in_tool = torch.matmul(self.tform_image_to_tool, self.image_points)
+            self.tform_tool_to_image = torch.linalg.inv(self.tform_image_to_tool) # pre-compute the inverse
+        else:
+            self.image_points_in_tool = self.image_points
 
     def __call__(self, tform_tool1_to_tool0, tform_tool2_to_tool1):  
         # safer to input and output explicitly the previous transform: tform_tool1_to_tool0
