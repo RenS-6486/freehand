@@ -106,7 +106,8 @@ class LabelTransform():
 
 
     def to_parameters(self, tforms, tforms_inv):
-        raise('Not implemented.')  # TODO: SVD
+        _tforms = self.to_transform_t2t(tforms, tforms_inv)
+        return extract_6dof_batch(_tforms)
     
 
 
@@ -170,7 +171,7 @@ class PredictionTransform():
                 if self.label_type=="point":
                     self.call_function = self.transform_to_point
                 elif self.label_type=="parameter":
-                    raise('Not implemented.')  #self.call_function = self.transform_to_parameter
+                    self.call_function = self.transform_to_param
                 else:
                     raise('Unknown label_type!')
             
